@@ -35,6 +35,16 @@ class DivoomClient:
             session,
             {"Command": "Channel/OnOffScreen", "OnOff": 1 if on else 0},
         )
+    
+    async def set_brightness(self, session, value: int) -> dict:
+        value = max(0, min(100, value))
+        return await self.request(
+            session,
+            {
+                "Command": "Channel/SetBrightness",
+                "Brightness": value,
+            },
+        )
 
     async def ping(self, session: aiohttp.ClientSession) -> None:
         # No tenemos endpoint de estado; hacemos un “ping” barato:

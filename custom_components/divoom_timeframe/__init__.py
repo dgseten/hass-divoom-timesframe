@@ -7,7 +7,7 @@ from homeassistant.core import HomeAssistant
 from .api import DivoomClient
 from .const import DOMAIN
 
-PLATFORMS: list[str] = ["switch"]
+PLATFORMS: list[str] = ["switch", "number"]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
